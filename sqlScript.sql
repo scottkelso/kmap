@@ -6,7 +6,7 @@ USE kmap;
 -- Create table layout
 
 CREATE TABLE Course (
-	courseID int unsigned PRIMARY KEY,
+	courseID int unsigned PRIMARY KEY auto_increment,
     title varchar(100) not null,
     date date not null, -- date or datetime?
     location enum("Belfast", "Derry", "Dublin", "London", "Gdansk", "Amsterdam", "Boston", "Frankfurt"),
@@ -47,7 +47,10 @@ CREATE TABLE UserCourse(
 );
 
 -- Add course
-
+INSERT INTO Course (title, date, description, info)
+VALUES ("course 1", 10/7/2019, "This is the first course running", "The course is made for everyone"),
+	("course 2", 15/9/2019, "Lots of Angular", "The aspired web developer"),
+    ("Java", 30/10/2020, "The course to take your java to the next level","After noon course, for good java users");
 
 
 -- Add users
