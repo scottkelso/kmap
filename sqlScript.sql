@@ -33,8 +33,18 @@ CREATE TABLE User(
 ALTER TABLE User
 ADD CONSTRAINT minNameLength CHECK (LENGTH(name) > 0);
 
+delimiter //
+
+CREATE TRIGGER trig_email_check BEFORE INSERT ON User
+FOR EACH ROW
+BEGIN
+	IF (NEW.email REGEXP '^[^@]*[@]{1}[k]{1}[a]{1}[i]{1}[n]{1}[o]{1}[s]{1}[.]{1}[c]{1}[o]{1}[m]{1}$') = 0 THEN
+		SET NEW.email = null;
+	END IF;
+END //
 
 
+delimiter ;
 
 CREATE TABLE UserCourse(
 	courseID int unsigned,
@@ -53,10 +63,10 @@ VALUES ("course 1", '2019/7/10', "This is the first course running", "The course
 
 -- Add users
 INSERT INTO User (name, email)
-VALUES  ("Will Smith", "willsmith@gmail.com"),
-		("John Wick", "johnwick@gmail.com"),
-        ("Bill Gates", "billgates@gmail.com"),
-        ("Warren Buffett", "warrenbuffett@gmail.com")
+VALUES  ("Will Smith", "willsmith@kainos.com"),
+		("John Wick", "johnwick@kainos.com"),
+        ("Bill Gates", "billgates@kainos.com"),
+        ("Warren Buffett", "warrenbuffett@kainos.com")
 
 
 -- add users to course
