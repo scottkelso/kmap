@@ -25,7 +25,7 @@ ALTER TABLE Course
 ADD CONSTRAINT minInfoLength CHECK (LENGTH(title) > 0);
 
 CREATE TABLE User(
-	userID int unsigned PRIMARY KEY,
+	userID int unsigned PRIMARY KEY auto_increment,
 	name varchar(30) not null,
 	email varchar(254) not null
 );
@@ -33,8 +33,7 @@ CREATE TABLE User(
 ALTER TABLE User
 ADD CONSTRAINT minNameLength CHECK (LENGTH(name) > 0);
 
-ALTER TABLE User
-ADD CONSTRAINT emailRegex CHECK (REGEXP_LIKE(email, '%[@]{1}%[.]{1}%'));
+
 
 
 CREATE TABLE UserCourse(
@@ -51,9 +50,13 @@ INSERT INTO Course (title, date, description, info)
 VALUES ("course 1", '2019/7/10', "This is the first course running", "The course is made for everyone"),
 	("course 2", '2019/9/15', "Lots of Angular", "The aspired web developer"),
     ("Java", '2020/10/6', "The course to take your java to the next level","After noon course, for good java users");
-    
 
 -- Add users
+INSERT INTO User (name, email)
+VALUES  ("Will Smith", "willsmith@gmail.com"),
+		("John Wick", "johnwick@gmail.com"),
+        ("Bill Gates", "billgates@gmail.com"),
+        ("Warren Buffett", "warrenbuffett@gmail.com")
 
 
 -- add users to course
