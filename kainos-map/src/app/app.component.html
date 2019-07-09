@@ -1,5 +1,5 @@
 <!-- Top container -->
-<div class="w3-bar w3-top w3-blue w3-large" style="z-index:4">
+<div class="w3-bar w3-top w3-large" style="z-index:4; background-color: #007bff; color: white">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
       class="fa fa-bars"></i> Menu</button>
   <span class="w3-bar-item w3-left">Kainos MAP</span>
@@ -13,9 +13,9 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
   <!-- Header -->
-  <header style="padding-top:8em; padding-left: 4em;">
+  <header style="padding-top:8em; padding-left: 4em; padding-right: 4em;">
     <table style="width:100%">
-      <tr style="background:#2196F3; color: white">
+      <tr style="background-color: #007bff; color: white">
         <th>Course Title</th>
         <th>Date</th>
         <th>Location</th>
@@ -28,9 +28,14 @@
         <td>{{course.description}}</td>
       </tr>
     </table>
-  </header>
-  <br>
-  <br>
+    <br>
+    <br>
 
-  <!-- <app-addcourse></app-addcourse> -->
+
+    <button (click)="addCourse()" class="btn btn-primary">Add New Course</button>
+
+    <app-addcourse *ngIf="showAddCourse"></app-addcourse>
+
+  </header>
+
 </div>

@@ -9,9 +9,12 @@ import { Course } from '../course';
 })
 export class AppComponent {
   title: string;
-
-
-  constructor(private http: HttpClient) {}
   courses = this.http.get<Course[]>('/api/getcourses');
+  constructor(private http: HttpClient) {}
+
+  showAddCourse = false;
+  addCourse(): void {
+    this.showAddCourse = true;
+  }
 
 }

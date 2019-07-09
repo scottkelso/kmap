@@ -5,7 +5,7 @@ const db = mysql.createConnection({
     user: 'username',
     password: 'password',
     database: 'kmap'
-})
+});
 
 exports.getCourses = function (callback) {
     db.query(
@@ -16,4 +16,17 @@ exports.getCourses = function (callback) {
             }
         }
     );
-}
+};
+
+exports.addCourse = function (course, callback) {
+    console.log("Adding course");
+    db.query(
+        "INSERT INTO Course SET ?", course,
+        function (err, rows) {
+            console.log("Added course");
+            if (err, rows) {
+                callback(rows);
+            }
+        }
+    );
+};
