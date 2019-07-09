@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: String;
 
-  courses = [
+  /*courses = [
     {
       title: "Test Course",
       date: "8th July 2020",
@@ -19,5 +19,7 @@ export class AppComponent {
       date: "12th July 2020",
       location: "Derry"
     }
-  ];
+  ];*/
+
+  courses = this.http.getcourses<Course[]>('/api/courses');
 }
