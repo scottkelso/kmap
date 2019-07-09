@@ -24,6 +24,18 @@ ADD CONSTRAINT minDescLength CHECK (LENGTH(description) > 0);
 ALTER TABLE Course
 ADD CONSTRAINT minInfoLength CHECK (LENGTH(title) > 0);
 
+delimiter //
+
+CREATE TRIGGER trig_date_check BEFORE INSERT ON Course
+FOR EACH ROW
+BEGIN
+	IF (NEW.date < CURRENT_DATE()) = 1 THEN
+		SET NEW.title = null;
+	END IF;
+END //
+
+delimiter ;
+
 CREATE TABLE User(
 	userID int unsigned PRIMARY KEY auto_increment,
 	name varchar(30) not null,
