@@ -54,7 +54,7 @@ delimiter //
 CREATE TRIGGER trig_email_check BEFORE INSERT ON User
 FOR EACH ROW
 BEGIN
-	IF (NEW.email REGEXP '^[^@]*[@]{1}[k]{1}[a]{1}[i]{1}[n]{1}[o]{1}[s]{1}[.]{1}[c]{1}[o]{1}[m]{1}$') = 0 THEN
+	IF (NEW.email REGEXP '^[^@]+[@]{1}[k]{1}[a]{1}[i]{1}[n]{1}[o]{1}[s]{1}[.]{1}[c]{1}[o]{1}[m]{1}$') = 0 THEN
 		SET NEW.email = null;
 	END IF;
 END //
