@@ -55,6 +55,16 @@ CREATE TABLE UserCourse(
     foreign key (userID) references User(userID)
 );
 
+delimiter //
+
+CREATE TRIGGER trig_add_UserCourse BEFORE INSERT ON UserCourse
+FOR EACH ROW
+BEGIN
+	SET NEW.signup = CURDATE();
+END //
+
+delimiter ;
+
 -- Add course
 INSERT INTO Course (title, date, description, info)
 VALUES ("course 1", '2019/7/10', "This is the first course running", "The course is made for everyone"),
