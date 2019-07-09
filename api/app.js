@@ -19,7 +19,9 @@ app.listen(7999, function() {
 });
 
 app.get('/getcourses', function(req, res) {
-    res.send(courses);
+    updateCourses(function(){
+            res.send(courses);
+    });
 });
 
 courses = [];

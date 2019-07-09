@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: String;
+
+  constructor(private http: HttpClient) {}
 
   /*courses = [
     {
@@ -21,5 +25,5 @@ export class AppComponent {
     }
   ];*/
 
-  courses = this.http.getcourses<Course[]>('/api/courses');
+  courses = this.http.get<Course[]>('/api/getcourses');
 }
