@@ -12,12 +12,14 @@ export class AppComponent {
     {
       title: "Test Course",
       date: "8th July 2020",
-      location: "Belfast"
+      location: "Belfast",
+      desc: "Learning how to do testing"
     },
     {
       title: "Presentation Skills",
       date: "12th July 2020",
-      location: "Derry"
+      location: "Derry",
+      desc: "Learning presentation techniques"
     }
   ];
 
