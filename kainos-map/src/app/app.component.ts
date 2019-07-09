@@ -8,7 +8,7 @@ import { Course } from '../course';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: String;
+  title: string;
 
 
   constructor(private http: HttpClient) {}
