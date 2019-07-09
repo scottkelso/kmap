@@ -10,20 +10,8 @@ import { Course } from '../course';
 export class AppComponent {
   title: String;
 
+
   constructor(private http: HttpClient) {}
-
-  /*courses = [
-    {
-      title: "Test Course",
-      date: "8th July 2020",
-      location: "Belfast"
-    },
-    {
-      title: "Presentation Skills",
-      date: "12th July 2020",
-      location: "Derry"
-    }
-  ];*/
-
   courses = this.http.get<Course[]>('/api/getcourses');
+
 }

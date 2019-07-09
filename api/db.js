@@ -9,7 +9,7 @@ const db = mysql.createConnection({
 
 exports.getCourses = function(callback){
     db.query(
-        "SELECT courseID, title, date, description FROM Course;",
+        "SELECT courseID, title, date, description, location FROM Course;",
         function(err, rows){
             if(err, rows){
                 callback(rows);
