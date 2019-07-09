@@ -40,7 +40,7 @@ ADD CONSTRAINT emailRegex CHECK (REGEXP_LIKE(email, '%[@]{1}%[.]{1}%'));
 CREATE TABLE UserCourse(
 	courseID int unsigned,
     userID int unsigned,
-    signup date default CURRENT_TIMESTAMP,
+    signup date,
     role enum("trainer", "trainee"),
     foreign key (courseID) references Course(courseID),
     foreign key (userID) references User(userID)
@@ -48,10 +48,10 @@ CREATE TABLE UserCourse(
 
 -- Add course
 INSERT INTO Course (title, date, description, info)
-VALUES ("course 1", 10/7/2019, "This is the first course running", "The course is made for everyone"),
-	("course 2", 15/9/2019, "Lots of Angular", "The aspired web developer"),
-    ("Java", 30/10/2020, "The course to take your java to the next level","After noon course, for good java users");
-
+VALUES ("course 1", '2019/7/10', "This is the first course running", "The course is made for everyone"),
+	("course 2", '2019/9/15', "Lots of Angular", "The aspired web developer"),
+    ("Java", '2020/10/6', "The course to take your java to the next level","After noon course, for good java users");
+    
 
 -- Add users
 
