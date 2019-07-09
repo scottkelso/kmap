@@ -9,7 +9,7 @@ CREATE TABLE Course (
 	courseID int unsigned PRIMARY KEY auto_increment,
     title varchar(100) not null,
     date date not null,
-    location enum("Belfast", "Derry", "Dublin", "London", "Gdansk", "Amsterdam", "Boston", "Frankfurt"),
+    location enum("Belfast", "Derry", "Dublin", "London", "Gdansk", "Amsterdam", "Boston", "Frankfurt") not null,
     description varchar(300) not null,
     info varchar(200) not null,
     maxAtt int unsigned not null
@@ -99,12 +99,12 @@ CREATE VIEW attendeeCount AS
 	
 
 -- Add course
-INSERT INTO Course (title, date, description, info, maxAtt)
-VALUES ("Angular", '2019/7/10', "Angular training course for all levels", "The course is made for everyone", 100),
-	("AngularAdv", '2019/9/15', "Take angular further", "The aspired web developer", 10),
-    ("Java", '2020/10/6', "The course to take your java to the next level","After noon course, for good java users", 1),
-    ("Workday", '2019/11/10', "Course to take people over the basics of workday, and show other features", "For new users to get better understanding in small enviroment", 5),
-    ("UX", '2019/10/08', "Learn how to improve your users experience", "Course will run all day", 20);
+INSERT INTO Course (title, date, location, description, info, maxAtt)
+VALUES ("Angular", '2019/7/10', "Derry", "Angular training course for all levels", "The course is made for everyone", 100),
+	("AngularAdv", '2019/9/15', "Dublin", "Take angular further", "The aspired web developer", 10),
+    ("Java", '2020/10/6', "Dublin", "The course to take your java to the next level","After noon course, for good java users", 1),
+    ("Workday", '2019/11/10', "Gdansk", "Course to take people over the basics of workday, and show other features", "For new users to get better understanding in small enviroment", 5),
+    ("UX", '2019/10/08', "Frankfurt", "Learn how to improve your users experience", "Course will run all day", 20);
 
 -- Add users
 INSERT INTO User (name, email)
