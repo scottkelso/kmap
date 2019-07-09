@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'kainos-map';
+  title: String;
+
+  courses = [
+    {
+      title: "Test Course",
+      date: "8th July 2020",
+      location: "Belfast"
+    },
+    {
+      title: "Presentation Skills",
+      date: "12th July 2020",
+      location: "Derry"
+    }
+  ];
 }
