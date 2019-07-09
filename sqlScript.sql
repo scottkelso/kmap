@@ -92,8 +92,15 @@ INSERT INTO User (name, email)
 VALUES  ("Will Smith", "willsmith@kainos.com"),
 		("John Wick", "johnwick@kainos.com"),
         ("Bill Gates", "billgates@kainos.com"),
-        ("Warren Buffett", "warrenbuffett@kainos.com")
+        ("Warren Buffett", "warrenbuffett@kainos.com");
 
 
 -- add users to course
+
+INSERT INTO UserCourse (userId, courseID, role)
+VALUES (1,1, "trainee"),
+		(2,1, "trainer"),
+        (3,2, "trainee"),
+        (2,2, "trainee");
+    
     
