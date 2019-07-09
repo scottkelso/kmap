@@ -11,7 +11,8 @@ CREATE TABLE Course (
     date date not null, -- date or datetime?
     location enum("Belfast", "Derry", "Dublin", "London", "Gdansk", "Amsterdam", "Boston", "Frankfurt"),
     description varchar(300) not null,
-    info varchar(200) not null
+    info varchar(200) not null,
+    maxAtt int unsigned not null
 );
 
 ALTER TABLE Course
@@ -23,6 +24,9 @@ ADD CONSTRAINT minDescLength CHECK (LENGTH(description) > 0);
 
 ALTER TABLE Course
 ADD CONSTRAINT minInfoLength CHECK (LENGTH(title) > 0);
+
+ALTER TABLE Course
+ADD CONSTRAINT minMaxAtt CHECK (maxAtt > 0);
 
 delimiter //
 
@@ -78,10 +82,10 @@ END //
 delimiter ;
 
 -- Add course
-INSERT INTO Course (title, date, description, info)
-VALUES ("course 1", '2019/7/10', "This is the first course running", "The course is made for everyone"),
-	("course 2", '2019/9/15', "Lots of Angular", "The aspired web developer"),
-    ("Java", '2020/10/6', "The course to take your java to the next level","After noon course, for good java users");
+INSERT INTO Course (title, date, description, info, maxAtt)
+VALUES ("course 1", '2019/7/10', "This is the first course running", "The course is made for everyone", 100),
+	("course 2", '2019/9/15', "Lots of Angular", "The aspired web developer", 10),
+    ("Java", '2020/10/6', "The course to take your java to the next level","After noon course, for good java users", 1);
 
 -- Add users
 INSERT INTO User (name, email)
