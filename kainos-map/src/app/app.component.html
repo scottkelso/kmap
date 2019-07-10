@@ -14,7 +14,7 @@
 <div class="w3-main">
   <!-- Header -->
   <header style="padding-top:8em; padding-left: 4em; padding-right: 4em;">
-    <app-addcourse *ngIf="showAddCourse"></app-addcourse>
+    <app-addcourse *ngIf="showAddCourse" [(course)]="course" (courseChange)="onNotify()"></app-addcourse>
     <br>
     <br>
     <button (click)="addCourse()" class="btn btn-primary">Add New Course</button>
@@ -28,6 +28,12 @@
         <th>Description</th>
       </tr>
       <tr *ngFor="let course of courses|async">
+        <td>{{course.title}}</td>
+        <td>{{course.date | date}}</td>
+        <td>{{course.location}}</td>
+        <td>{{course.description}}</td>
+      </tr>
+      <tr *ngFor="let course of courses2">
         <td>{{course.title}}</td>
         <td>{{course.date | date}}</td>
         <td>{{course.location}}</td>
