@@ -68,8 +68,8 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!addForm.valid">Submit</button>
-  <div class="isFormSubmitted">Form has been submitted</div>
+  <button type="submit" class="btn btn-success" [disabled]="!addForm.valid" (click)="isSub()">Submit</button>
+  <div class="isFormSubmitted" *ngIf="isSubmit">Form has been submitted</div>
 
 </form>
 

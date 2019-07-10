@@ -15,6 +15,7 @@ export class AddcourseComponent implements OnInit {
 
   public newCourse: Course;
   submitted = false;
+  isSubmit = false;
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,7 @@ export class AddcourseComponent implements OnInit {
 
   addcourse(addForm): void {
     if (addForm.valid) {
+      this.isSubmit = !this.isSubmit;
       this.submitted = true;
       console.log(this.newCourse);
       this.http.post<Course>('/api/addcourse', this.newCourse);
@@ -31,6 +33,10 @@ export class AddcourseComponent implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  mySub() {
+    this.isSubmit = !this.isSubmit;
   }
 
 }
