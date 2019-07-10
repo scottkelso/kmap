@@ -1,9 +1,11 @@
 <!-- Top container -->
-<div class="w3-bar w3-top w3-blue w3-large" style="z-index:4">
+<div class="w3-bar w3-top w3-large" style="z-index:4; background-color: #184073; color: white">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
       class="fa fa-bars"></i> Menu</button>
-  <span class="w3-bar-item w3-left">Kainos Maps</span>
+  <img src="../assets/kainos.jpg" width="250" height="100">
+
 </div>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
@@ -13,24 +15,43 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
   <!-- Header -->
-  <header style="padding-top:8em; padding-left: 4em;">
-    <table style="width:100%">
-      <tr style="background:#2196F3; color: white">
-        <th>Course Title</th>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Description</th>
-      </tr>
-      <tr *ngFor="let course of courses|async">
-        <td>{{course.title}}</td>
-        <td>{{course.date}}</td>
-        <td>{{course.location}}</td>
-        <td>{{course.description}}</td>
-      </tr>
-    </table>
-  </header>
-  <br>
-  <br>
 
-  <!-- <app-addcourse></app-addcourse> -->
+  <header style="padding-top:8em; padding-left: 4em; padding-right: 4em;">
+    <div class="container">
+      <img src="../assets/map.png" width="250" height="100">
+      <br><br>
+      <ngb-tabset>
+        <ngb-tab title="View Courses">
+          <ng-template ngbTabContent>
+            <table style="width:100%">
+              <tr style="background-color: #184073; color: white">
+                <th>Course Title</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Description</th>
+              </tr>
+              <tr *ngFor="let course of courses|async">
+                <td>{{course.title}}</td>
+                <td>{{course.date | date}}</td>
+                <td>{{course.location}}</td>
+                <td>{{course.description}}</td>
+              </tr>
+              <tr *ngFor="let course of courses2">
+                <td>{{course.title}}</td>
+                <td>{{course.date | date}}</td>
+                <td>{{course.location}}</td>
+                <td>{{course.description}}</td>
+              </tr>
+            </table>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Add a Course">
+          <ng-template ngbTabContent>
+            <app-addcourse [(course)]="course" (courseChange)="onNotify()"></app-addcourse>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </header>
+
 </div>

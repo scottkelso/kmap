@@ -1,25 +1,34 @@
-import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+
+
 import { Course } from '../course';
 import axios from 'axios';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
+  @Input() course: Course;
+  @Output() courseChange = new EventEmitter<Course>();
+  title: string;
+  courses = this.http.get<Course[]>('/api/getcourses');
+  courses2: Course[] = [];
+
   newCourse: Course;
   httpOptions:any;
   
-  constructor(private http: HttpClient) {
-    let newCourse = new Course();
-    newCourse.courseID = 6;
-    newCourse.title = "title";
-    newCourse.date = "testdate";
-    newCourse.description = "desc";
-    this.createCourse(newCourse);
-  }
+  // constructor(private http: HttpClient) {
+  //   // let newCourse = new Course();
+  //   // newCourse.courseID = 6;
+  //   // newCourse.title = "title";
+  //   // newCourse.date = "testdate";
+  //   // newCourse.description = "desc";
+  //   // this.createCourse(newCourse);
+  // }
 
   getHeaders(){
     return  this.httpOptions = {
@@ -29,7 +38,20 @@ export class AppComponent {
     } 
   }
 
-  courses = this.http.get<Course[]>('/api/getcourses');
+
+
+
+  constructor(private http: HttpClient) {}
+
+  updateCourses(): void {
+    this.courses2.push(this.course);
+  }
+
+  public onNotify() {
+    this.updateCourses();
+    this.createCourse(this.course);
+  }
+
 
 
   createCourse(param: any){

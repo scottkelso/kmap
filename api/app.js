@@ -9,12 +9,13 @@ app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 
 var jsonParser = bodyParser.json();
 
+
 function updateCourses(coursefn){
     db.getCourses(function(rows){
         courses = rows;
         coursefn();
     });
-};
+}
 
 app.get('/', function(req, res) {
     res.send('<h1>First message from expreess</h1>\n');
@@ -27,13 +28,22 @@ app.listen(7999, function() {
 
 app.get('/getcourses', function(req, res) {
     updateCourses(function(){
+        res.send(courses);
+    });
+});
+
+app.post('/addcourse', function(req, res) {
+    courses.push(req.body);
+    db.addCourse(req.body, function(){
+        updateCourses(function(){
             res.send(courses);
+        });
     });
 });
 
 app.post('/createCourse', function(req,res){
     console.log('db works '+ JSON.stringify(req.body));
-    // db.addCourse(req.param);
+    db.addCourse(req.body);
     res.sendStatus(200);
     res.end;
 });

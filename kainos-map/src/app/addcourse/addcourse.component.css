@@ -1,0 +1,26 @@
+form input.ng-valid {
+    background: lightgreen;
+}
+form input.ng-invalid {
+    background: pink;
+}
+
+form select.ng-invalid {
+    background: pink;
+}
+
+form select.ng-valid {
+    background: lightgreen;
+}
+
+form textarea.ng-invalid {
+    background: pink;
+}
+
+form textarea.ng-valid {
+    background: lightgreen;
+}
+
+.validationMessage {
+    color: red
+}

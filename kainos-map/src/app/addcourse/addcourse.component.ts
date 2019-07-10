@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Course } from '../course';
+
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-addcourse',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddcourseComponent implements OnInit {
 
-  constructor() { }
+  @Input() course: Course;
+  @Output() courseChange = new EventEmitter<Course>();
+
+  public newCourse: Course;
+  submitted = false;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.newCourse = new Course();
+  }
+
+  addcourse(addForm): void {
+    if (addForm.valid) {
+      this.submitted = true;
+      console.log(this.newCourse);
+      this.http.post<Course>('/api/addcourse', this.newCourse);
+      this.courseChange.emit(this.newCourse);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
 }
