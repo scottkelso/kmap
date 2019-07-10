@@ -9,7 +9,7 @@
       <div class="validationMessage" *ngIf="addForm.hasError('required', 'title')">Title is required</div>
     </div>
     <div class="form-group col-md-6">
-      <label>Date</label>
+      <label>Course Date</label>
       <input type="text" class="form-control" id="inputDate" placeholder="yyyy-mm-dd"
              name="date" [(ngModel)]="newCourse.date" required
              pattern="(2019|202[0-9])[-](0[7-9]|1[0-2])[-](1[0-9]|2[0-9]|3[0-1])"
@@ -21,7 +21,7 @@
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label>Location</label>
+      <label>Course Location</label>
       <select id="inputLocation" class="form-control bootstrap-select"
               name="location" [(ngModel)]="newCourse.location" required>
         <option selected value="Belfast">Belfast</option>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="form-group">
-    <label>Description</label>
+    <label>Course Description</label>
     <textarea class="form-control" id="inputDescription" placeholder="Enter brief description of the course (Max 300 characters)" rows="3"
               name="description" [(ngModel)]="newCourse.description" required></textarea>
     <div class="validationMessage" *ngIf="addForm.hasError('required', 'description')">Description is required</div>

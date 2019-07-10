@@ -20,8 +20,10 @@ exports.getCourses = function (callback) {
 
 exports.addCourse = function (course, callback) {
     console.log("Adding course");
+    var sql = "INSERT INTO Course SET ?";
     db.query(
-        "INSERT INTO Course (title, date, description, info, location) VALUES  ('" + course.title + "', '"+ course.date +"','" + course.description + "','" + course.info + "','" + course.location + "');",
+        sql, course,
+        // "INSERT INTO Course (title, date, description, info, location) VALUES  ('" + course.title + "', '"+ course.date +"','" + course.description + "','" + course.info + "','" + course.location + "');",
         function (err, rows) {
             // if (err) throw err;
             // console.log("Added course" + course.title + ", "+ course.date +"," + course.description + "," + course.info + "," + course.location);
