@@ -14,6 +14,12 @@
 <div class="w3-main">
   <!-- Header -->
   <header style="padding-top:8em; padding-left: 4em; padding-right: 4em;">
+    <app-addcourse *ngIf="showAddCourse"></app-addcourse>
+    <br>
+    <br>
+    <button (click)="addCourse()" class="btn btn-primary">Add New Course</button>
+    <br>
+    <br>
     <table style="width:100%">
       <tr style="background-color: #007bff; color: white">
         <th>Course Title</th>
@@ -32,7 +38,6 @@
     <br>
 
 
-    <button (click)="addCourse()" class="btn btn-primary">Add New Course</button>
 
     <app-addcourse *ngIf="showAddCourse"></app-addcourse>
 
