@@ -1,37 +1,45 @@
 <h1> Add Course </h1>
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="addcourse(addForm)" #addForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Title</label>
       <input type="text" class="form-control" id="inputTitle" placeholder="Title"
-             name="title" [(ngModel)]="newCourse.title" required>
+             name="title" [(ngModel)]="newCourse.title" required
+      >
+      <div *ngIf="addForm.hasError('required', 'title')">Title is required</div>
     </div>
     <div class="form-group col-md-6">
       <label>Date</label>
-      <input type="text" class="form-control" id="inputDate" placeholder="Date"
+      <input type="text" class="form-control" id="inputDate" placeholder="yyyy-mm-dd"
              name="date" [(ngModel)]="newCourse.date" required>
+      <div *ngIf="addForm.hasError('required', 'date')">Date is required</div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Location</label>
-      <select id="inputLocation" class="form-control"
+      <select id="inputLocation" class="form-control bootstrap-select"
               name="location" [(ngModel)]="newCourse.location" required>
-        <option selected>Belfast</option>
-        <option>Derry</option>
-        <option>Dublin</option>
-        <option>London</option>
-        <option>Gdansk</option>
-        <option>Amsterdam</option>
-        <option>Boston</option>
-        <option>Frankfurt</option>
+        <option value="Belfast" selected="selected">Belfast</option>
+        <option value="Derry">Derry</option>
+        <option value="Dublin">Dublin</option>
+        <option value="London">London</option>
+        <option value="Gdansk">Gdansk</option>
+        <option value="Amsterdam">Amsterdam</option>
+        <option value="Boston">Boston</option>
+        <option value="Frankfurt">Frankfurt</option>
       </select>
+      <div *ngIf="addForm.hasError('required', 'location')">Location is required</div>
     </div>
     <div class="form-group col-md-6">
       <label>Max Attendee's</label>
       <input type="text" class="form-control" id="inputMaxAttendee"
-             name="maxAtt" [(ngModel)]="newCourse.maxAtt" required>
+             name="maxAtt" [(ngModel)]="newCourse.maxAtt" required
+             pattern="^[0-9]*$"
+      >
+      <div *ngIf="addForm.hasError('required', 'maxAtt')">Max Attendee's is required</div>
+      <div *ngIf="addForm.hasError('pattern', 'maxAtt')">Max Attendee's has to be a number</div>
     </div>
   </div>
 
@@ -39,12 +47,14 @@
     <label>Description</label>
     <textarea class="form-control" id="inputDescription" placeholder="Description" rows="3"
               name="description" [(ngModel)]="newCourse.description" required></textarea>
+    <div *ngIf="addForm.hasError('required', 'description')">Description is required</div>
   </div>
 
   <div class="form-group">
     <label>Attendee Info</label>
     <textarea class="form-control" id="inputAttendeeInfo" placeholder="Attendee Info" rows="3"
               name="info" [(ngModel)]="newCourse.info"required></textarea>
+    <div *ngIf="addForm.hasError('required', 'info')">Attendee info is required</div>
   </div>
 
   {{newCourse.title}}

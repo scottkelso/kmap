@@ -19,10 +19,20 @@ export class AddcourseComponent implements OnInit {
     this.newCourse = new Course();
   }
 
-  onSubmit() {
-    this.submitted = true;
-    console.log(this.newCourse);
-    this.http.post<Course>('/api/addcourse', this.newCourse);
+  // onSubmit() {
+  //   this.submitted = true;
+  //   console.log(this.newCourse);
+  //   this.http.post<Course>('/api/addcourse', this.newCourse);
+  // }
+
+  addcourse(addForm): void {
+    if(addForm.valid) {
+      this.submitted = true;
+      console.log(this.newCourse);
+      this.http.post<Course>('/api/addcourse', this.newCourse);
+    } else {
+      console.log("Form is invalid");
+    }
   }
 
 }
