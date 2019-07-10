@@ -3,21 +3,20 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Title</label>
-      <input type="text" class="form-control" id="inputTitle" placeholder="Title"
-             name="title" [(ngModel)]="newCourse.title" required>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title"
+        [(ngModel)]="newCourse.title" required>
     </div>
     <div class="form-group col-md-6">
       <label>Date</label>
-      <input type="text" class="form-control" id="inputDate" placeholder="Date"
-             name="date" [(ngModel)]="newCourse.date" required>
+      <input type="text" class="form-control" id="inputDate" placeholder="Date" name="date" [(ngModel)]="newCourse.date"
+        required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Location</label>
-      <select id="inputLocation" class="form-control"
-              name="location" [(ngModel)]="newCourse.location" required>
+      <select id="inputLocation" class="form-control" name="location" [(ngModel)]="newCourse.location" required>
         <option selected>Belfast</option>
         <option>Derry</option>
         <option>Dublin</option>
@@ -30,29 +29,29 @@
     </div>
     <div class="form-group col-md-6">
       <label>Max Attendee's</label>
-      <input type="text" class="form-control" id="inputMaxAttendee"
-             name="maxAtt" [(ngModel)]="newCourse.maxAtt" required>
+      <input type="text" class="form-control" id="inputMaxAttendee" name="maxAtt" [(ngModel)]="newCourse.maxAtt"
+        required>
     </div>
   </div>
 
   <div class="form-group">
     <label>Description</label>
-    <textarea class="form-control" id="inputDescription" placeholder="Description" rows="3"
-              name="description" [(ngModel)]="newCourse.description" required></textarea>
+    <textarea class="form-control" id="inputDescription" placeholder="Description" rows="3" name="description"
+      [(ngModel)]="newCourse.description" required></textarea>
   </div>
 
   <div class="form-group">
     <label>Attendee Info</label>
-    <textarea class="form-control" id="inputAttendeeInfo" placeholder="Attendee Info" rows="3"
-              name="info" [(ngModel)]="newCourse.info"required></textarea>
+    <textarea class="form-control" id="inputAttendeeInfo" placeholder="Attendee Info" rows="3" name="info"
+      [(ngModel)]="newCourse.info" required></textarea>
   </div>
 
-  {{newCourse.title}}
+  <!-- {{newCourse.title}}
   {{newCourse.date}}
   {{newCourse.location}}
   {{newCourse.maxAtt}}
   {{newCourse.description}}
-  {{newCourse.info}}
+  {{newCourse.info}} -->
 
   <button type="submit" class="btn btn-success">Submit</button>
 
