@@ -14,32 +14,33 @@
 <div class="w3-main">
   <!-- Header -->
   <header style="padding-top:8em; padding-left: 4em; padding-right: 4em;">
-    <app-addcourse *ngIf="showAddCourse"></app-addcourse>
-    <br>
-    <br>
-    <button (click)="addCourse()" class="btn btn-primary">Add New Course</button>
-    <br>
-    <br>
-    <table style="width:100%">
-      <tr style="background-color: #007bff; color: white">
-        <th>Course Title</th>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Description</th>
-      </tr>
-      <tr *ngFor="let course of courses|async">
-        <td>{{course.title}}</td>
-        <td>{{course.date | date}}</td>
-        <td>{{course.location}}</td>
-        <td>{{course.description}}</td>
-      </tr>
-    </table>
-    <br>
-    <br>
-
-
-
-
+    <div class="container">
+      <ngb-tabset>
+        <ngb-tab title="View Courses">
+          <ng-template ngbTabContent>
+            <table style="width:100%">
+              <tr style="background-color: #007bff; color: white">
+                <th>Course Title</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Description</th>
+              </tr>
+              <tr *ngFor="let course of courses|async">
+                <td>{{course.title}}</td>
+                <td>{{course.date | date}}</td>
+                <td>{{course.location}}</td>
+                <td>{{course.description}}</td>
+              </tr>
+            </table>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Add a Course">
+          <ng-template ngbTabContent>
+            <app-addcourse></app-addcourse>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
   </header>
 
 </div>

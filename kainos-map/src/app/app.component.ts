@@ -14,7 +14,7 @@ export class AppComponent {
 
   showAddCourse = false;
   addCourse(): void {
-    this.showAddCourse = true;
+    this.showAddCourse = !this.showAddCourse;
   }
 
 }
