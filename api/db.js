@@ -17,3 +17,9 @@ exports.getCourses = function (callback) {
         }
     );
 }
+
+exports.addCourse = function (callback) {
+    db.query(
+        "INSERT INTO Course (name, location, description) VALUES (?,?,?)"
+    )
+}
