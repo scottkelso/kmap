@@ -1,5 +1,11 @@
 # KainosMap
 
+To run the app
+
+- cd into api directory and type, "node app.js"
+- open separate terminal
+- cd into kainos-map directory and type, "npm start"
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
 ## Development server

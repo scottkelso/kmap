@@ -1,0 +1,73 @@
+<h1>New Course Details</h1>
+<form (ngSubmit)="addcourse(addForm)" #addForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Course Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Enter title"
+             name="title" [(ngModel)]="newCourse.title" required
+      >
+      <div class="validationMessage" *ngIf="addForm.hasError('required', 'title')">Title is required</div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Date</label>
+      <input type="text" class="form-control" id="inputDate" placeholder="yyyy-mm-dd"
+             name="date" [(ngModel)]="newCourse.date" required
+             pattern="(2019|202[0-9])[-](0[1-9]|1[0-2])[-](0[1-9]|1[0-9]|2[0-9]|3[0-1])"
+      >
+      <div class="validationMessage" *ngIf="addForm.hasError('required', 'date')">Date is required in the format yyyy-mm-dd</div>
+      <div class="validationMessage" *ngIf="addForm.hasError('pattern', 'date')">Date has to be in the format yyyy-mm-dd</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Location</label>
+      <select id="inputLocation" class="form-control bootstrap-select"
+              name="location" [(ngModel)]="newCourse.location" required>
+        <option selected value="Belfast">Belfast</option>
+        <option value="Derry">Derry</option>
+        <option value="Dublin">Dublin</option>
+        <option value="London">London</option>
+        <option value="Gdansk">Gdansk</option>
+        <option value="Amsterdam">Amsterdam</option>
+        <option value="Boston">Boston</option>
+        <option value="Frankfurt">Frankfurt</option>
+      </select>
+      <div class="validationMessage" *ngIf="addForm.hasError('required', 'location')">Location is required</div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Max Attendee's</label>
+      <input type="text" class="form-control" id="inputMaxAttendee" placeholder="Enter max attendee's"
+             name="maxAtt" [(ngModel)]="newCourse.maxAtt" required
+             pattern="[1-9][0-9]*$"
+      >
+      <div class="validationMessage" *ngIf="addForm.hasError('required', 'maxAtt')">Max Attendee's is required</div>
+      <div class="validationMessage" *ngIf="addForm.hasError('pattern', 'maxAtt')">Max Attendee's has to be a number</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" id="inputDescription" placeholder="Enter description" rows="3"
+              name="description" [(ngModel)]="newCourse.description" required></textarea>
+    <div class="validationMessage" *ngIf="addForm.hasError('required', 'description')">Description is required</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Attendee Info</label>
+      <textarea class="form-control" id="inputAttendeeInfo" placeholder="Enter attendee info" rows="3"
+                name="info" [(ngModel)]="newCourse.info"required></textarea>
+      <div class="validationMessage" *ngIf="addForm.hasError('required', 'info')">Attendee info is required</div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Name of trainers</label>
+      <textarea class="form-control" id="inputTrainerNames" placeholder="Enter trainer names" rows="3"
+                name="trainerNames">
+      </textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!addForm.valid">Submit</button>
+
+</form>
